@@ -49,7 +49,11 @@ export default function Home() {
     if (!winner) return;
     setShowCongrat(true);
     const theWinner = winnerCheats[playTime] || winner;
-    if (winnerList.includes(theWinner)) return;
+    if (winnerList.includes(theWinner)) {
+      setShowCongrat(false);
+      setPlayTime(playTime + 1);
+      return;
+    }
     setCurrentWinner(theWinner);
     setTimeout(() => {
       setWinnerList([...winnerList, theWinner]);
