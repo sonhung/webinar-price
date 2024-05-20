@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import WheelComponent from '@/components/wheel';
 import { useState, useEffect } from 'react';
 import { Button, Input } from '@/components/base';
@@ -5,6 +6,7 @@ import { IoClose } from 'react-icons/io5';
 import { SEG_COLOR } from '@/constants';
 import { Dialog, DialogContent } from '@/components/base';
 import Congratulation from '@/components/congratulation';
+import { getNewUser } from '@/utils';
 
 export default function Home() {
   const [users, setUser] = useState([]);
@@ -18,8 +20,9 @@ export default function Home() {
 
   const onAddUser = () => {
     if (!username) return;
-    setUser([...users, username]);
-    localStorage.setItem('users', JSON.stringify([...users, username]));
+    const userAdded = getNewUser(username);
+    setUser([...users, ...userAdded]);
+    localStorage.setItem('users', JSON.stringify([...users, ...userAdded]));
     setUsername('');
   };
 
@@ -52,7 +55,7 @@ export default function Home() {
       setWinnerList([...winnerList, theWinner]);
       setPlayTime(playTime + 1);
       setShowFinish(true);
-    }, 700);
+    }, 1000);
   };
 
   const onClose = () => {
@@ -62,6 +65,11 @@ export default function Home() {
 
   return (
     <div className='relative flex justify-center items-center w-screen h-screen overflow-hidden'>
+      <Head>
+        <title>Wheel wheel</title>
+        <meta name='description' content='Wheel wheel' />
+        <link rel='icon' type='image/svg+xml' href='/public/favicon.ico' />
+      </Head>
       <div className='absolute top-10 left-10'>
         <div>Nhập tên người tham dự:</div>
         <div className='flex w-[350px] items-center gap-4'>

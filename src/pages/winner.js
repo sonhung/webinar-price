@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Dialog, DialogContent } from '@/components/base';
 import { Button, Input } from '@/components/base';
 import { IoClose } from 'react-icons/io5';
+import { getNewUser } from '@/utils';
 
 const Winner = () => {
   const [show, setShow] = useState(false);
@@ -25,7 +26,8 @@ const Winner = () => {
 
   const onAddWinner = () => {
     if (!username) return;
-    const newWinner = [...winner, username];
+    const userAdded = getNewUser(username);
+    const newWinner = [...winner, ...userAdded];
     setWinner(newWinner);
     localStorage.setItem('winners', JSON.stringify(newWinner));
     setUsername('');

@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <title>Wheel wheel</title>
         <meta name='description' content='Wheel wheel' />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' type='image/svg+xml' href='/favicon.ico' />
       </Head>
       <body>
         <Main />
