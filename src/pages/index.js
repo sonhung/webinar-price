@@ -119,7 +119,7 @@ export default function Home() {
           <WheelComponent
             segments={users}
             segColors={SEG_COLOR}
-            winningSegment={winnerCheats[playTime]}
+            winningSegment={winnerCheats[playTime] || ''}
             onFinished={(winner) => onFinished(winner)}
             primaryColor='gray'
             contrastColor='white'
