@@ -14,7 +14,7 @@ const WheelComponent = ({
   let isStarted = false;
   const [isFinished, setFinished] = useState(false);
   let timerHandle = 0;
-  const timerDelay = segments.length;
+  const timerDelay = 20;
   let angleCurrent = 0;
   let angleDelta = 0;
   const size = 290;
@@ -73,8 +73,9 @@ const WheelComponent = ({
       angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2);
     } else {
       if (winningSegment) {
-        if (currentSegment === winningSegment && frames > segments.length) {
+        if (currentSegment === winningSegment && frames > 200) {
           progress = duration / upTime;
+
           angleDelta =
             maxSpeed * Math.sin((progress * Math.PI) / 2 + Math.PI / 2);
           progress = 1;

@@ -4,6 +4,7 @@ import { Button, Input } from '@/components/base';
 import { IoClose } from 'react-icons/io5';
 import { SEG_COLOR } from '@/constants';
 import { Dialog, DialogContent } from '@/components/base';
+import Congratulation from '@/components/congratulation';
 
 export default function Home() {
   const [users, setUser] = useState([]);
@@ -13,6 +14,7 @@ export default function Home() {
   const [showFinish, setShowFinish] = useState(false);
   const [winnerList, setWinnerList] = useState([]);
   const [currentWinner, setCurrentWinner] = useState('');
+  const [showCongrat, setShowCongrat] = useState(false);
 
   const onAddUser = () => {
     if (!username) return;
@@ -42,6 +44,7 @@ export default function Home() {
 
   const onFinished = (winner) => {
     if (!winner) return;
+    setShowCongrat(true);
     const theWinner = winnerCheats[playTime] || winner;
     if (winnerList.includes(theWinner)) return;
     setCurrentWinner(theWinner);
@@ -52,8 +55,13 @@ export default function Home() {
     }, 700);
   };
 
+  const onClose = () => {
+    setShowCongrat(false);
+    setShowFinish(false);
+  };
+
   return (
-    <div className='relative flex justify-center items-center w-screen h-screen'>
+    <div className='relative flex justify-center items-center w-screen h-screen overflow-hidden'>
       <div className='absolute top-10 left-10'>
         <div>Nhập tên người tham dự:</div>
         <div className='flex w-[350px] items-center gap-4'>
@@ -94,20 +102,22 @@ export default function Home() {
           ))}
         </div>
       </div>
-      {!showFinish && (
-        <WheelComponent
-          segments={users}
-          segColors={SEG_COLOR}
-          winningSegment={winnerCheats[playTime]}
-          onFinished={(winner) => onFinished(winner)}
-          primaryColor='gray'
-          contrastColor='white'
-          buttonText='Spin'
-          isOnlyOnce={true}
-          times={10}
-        />
-      )}
-      <Dialog open={showFinish} onOpenChange={() => setShowFinish(false)}>
+      <div className='z-[9999]'>
+        {!showFinish && (
+          <WheelComponent
+            segments={users}
+            segColors={SEG_COLOR}
+            winningSegment={winnerCheats[playTime]}
+            onFinished={(winner) => onFinished(winner)}
+            primaryColor='gray'
+            contrastColor='white'
+            buttonText='Spin'
+            isOnlyOnce={true}
+            times={10}
+          />
+        )}
+      </div>
+      <Dialog open={showFinish} onOpenChange={onClose}>
         <DialogContent>
           <div>
             <div className='my-7 text-center text-xl'>
@@ -116,11 +126,14 @@ export default function Home() {
             </div>
 
             <div className='flex justify-center'>
-              <Button onPress={() => setShowFinish(false)}>Đóng</Button>
+              <Button onPress={onClose}>Đóng</Button>
             </div>
           </div>
         </DialogContent>
       </Dialog>
+      <div className='absolute inset-0 z-[9998]'>
+        {showCongrat && <Congratulation />}
+      </div>
     </div>
   );
 }
