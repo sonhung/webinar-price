@@ -67,7 +67,7 @@ export default function Home() {
         <div className='font-bold'>Danh sách người tham dự:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {users.map((user, index) => (
-            <div className='flex'>
+            <div className='flex' key={user}>
               {index + 1}. {user}
               <IoClose
                 size={26}
@@ -88,7 +88,7 @@ export default function Home() {
         <div className='font-bold'>Danh sách người chiến thắng:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
-            <div className='flex text-[#FF5F00] text-xl font-bold'>
+            <div className='flex text-[#FF5F00] text-xl font-bold' key={user}>
               {index + 1}. {user}
             </div>
           ))}

@@ -62,7 +62,7 @@ const Winner = () => {
           <div className='mt-10'>
             <div>Danh sách người chiến thắng:</div>
             {winner.map((user, index) => (
-              <div className='flex'>
+              <div className='flex' key={user}>
                 {index + 1}. {user}
                 <IoClose
                   size={26}

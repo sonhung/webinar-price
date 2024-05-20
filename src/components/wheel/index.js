@@ -26,12 +26,15 @@ const WheelComponent = ({
   let frames = 0;
   const centerX = 300;
   const centerY = 300;
+
   useEffect(() => {
     wheelInit();
     setTimeout(() => {
       window.scrollTo(0, 1);
     }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [segments, winningSegment]);
+
   const wheelInit = () => {
     initCanvas();
     wheelDraw();
