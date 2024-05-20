@@ -131,9 +131,11 @@ export default function Home() {
           </div>
         </DialogContent>
       </Dialog>
-      <div className='absolute inset-0 z-[9998]'>
-        {showCongrat && <Congratulation />}
-      </div>
+      {showCongrat && (
+        <div className='absolute inset-0 z-[9998]'>
+          <Congratulation />
+        </div>
+      )}
     </div>
   );
 }
