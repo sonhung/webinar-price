@@ -75,16 +75,16 @@ export default function Home() {
         <link rel='icon' type='image/svg+xml' href='/public/favicon.ico' />
       </Head>
       <div className='absolute top-10 left-10'>
-        <div>Nhập tên người tham dự:</div>
+        <div>Input:</div>
         <div className='flex w-[350px] items-center gap-4'>
           <Input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className='my-4'
           />
-          <Button onPress={onAddUser}>Thêm</Button>
+          <Button onPress={onAddUser}>Add</Button>
         </div>
-        <div className='font-bold'>Danh sách người tham dự:</div>
+        <div className='font-bold'>Attendee list:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {users.map((user, index) => (
             <div className='flex' key={user}>
@@ -100,12 +100,12 @@ export default function Home() {
         </div>
         {users.length > 0 && (
           <Button onPress={clearAll} className='mt-5'>
-            Xóa tất cả
+            Clear all
           </Button>
         )}
       </div>
       <div className='absolute top-10 right-10'>
-        <div className='font-bold'>Danh sách người chiến thắng:</div>
+        <div className='font-bold'>Winner List:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
             <div className='flex text-[#FF5F00] text-xl font-bold' key={user}>
@@ -138,7 +138,7 @@ export default function Home() {
             </div>
 
             <div className='flex justify-center'>
-              <Button onPress={onClose}>Đóng</Button>
+              <Button onPress={onClose}>Close</Button>
             </div>
           </div>
         </DialogContent>
