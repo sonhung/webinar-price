@@ -77,20 +77,20 @@ export default function Home() {
         <link rel='icon' type='image/svg+xml' href='/public/favicon.ico' />
       </Head>
       <div className='absolute top-10 left-10'>
-        <div className='text-[#FF7F3E]  text-2xl'>Input:</div>
+        <div className='text-[#FF7F3E]  text-3xl'>Input:</div>
         <div className='flex w-[350px] items-center gap-4'>
           <Input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className='my-4'
+            className='my-4 text-2xl'
           />
           <Button onPress={onAddUser}>Add</Button>
         </div>
-        <div className='font-bold text-[#FF7F3E] text-2xl'>Attendee list:</div>
-        <div className='max-h-[70vh] overflow-auto'>
+        <div className='font-bold text-[#FF7F3E] text-3xl'>Attendee list:</div>
+        <div className='h-[70vh] overflow-auto'>
           {users.map((user, index) => (
             <div
-              className='flex text-[#FF7F3E] font-semibold text-2xl'
+              className='flex text-[#FF7F3E] font-semibold text-3xl'
               key={user}
             >
               {index + 1}. {user}
@@ -102,19 +102,19 @@ export default function Home() {
               />
             </div>
           ))}
+          {users.length > 0 && (
+            <Button onPress={clearAll} className='mt-5'>
+              Clear all
+            </Button>
+          )}
         </div>
-        {users.length > 0 && (
-          <Button onPress={clearAll} className='mt-5'>
-            Clear all
-          </Button>
-        )}
       </div>
       <div className='absolute top-[28vh] left-[75vw]'>
-        <div className='font-bold text-[#FF7F3E]  text-3xl'>Winner List:</div>
+        <div className='font-bold text-[#FF7F3E]  text-4xl'>Winner List:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
             <div
-              className='flex text-[#FC4100] text-3xl font-bold overflow-hidden'
+              className='flex text-[#FC4100] text-4xl font-bold overflow-hidden'
               key={user}
             >
               {index + 1}. {user}

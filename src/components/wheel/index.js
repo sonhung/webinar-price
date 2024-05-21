@@ -131,8 +131,8 @@ const WheelComponent = ({
     ctx.translate(centerX, centerY);
     ctx.rotate((lastAngle + angle) / 2);
     ctx.fillStyle = contrastColor || 'white';
-    ctx.font = 'bold 1em proxima-nova';
-    ctx.fillText(value.substr(0, 21), size / 2 + 20, 0);
+    ctx.font = 'bold 1.8em proxima-nova';
+    ctx.fillText(value.substr(0, 21), size / 2 + 30, 0);
     ctx.restore();
   };
 
