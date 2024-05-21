@@ -68,7 +68,9 @@ export default function Home() {
   };
 
   return (
-    <div className='relative flex justify-center items-center w-screen h-screen overflow-hidden'>
+    <div
+      className={`relative flex justify-center items-center w-screen h-screen overflow-hidden bg-[url('/images/background.png')] bg-no-repeat bg-cover`}
+    >
       <Head>
         <title>Wheel wheel</title>
         <meta name='description' content='Wheel wheel' />
@@ -87,11 +89,11 @@ export default function Home() {
         <div className='font-bold'>Attendee list:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {users.map((user, index) => (
-            <div className='flex' key={user}>
+            <div className='flex text-[#002379] font-semibold' key={user}>
               {index + 1}. {user}
               <IoClose
                 size={26}
-                color='#f2994a'
+                color='#40A578'
                 onClick={() => removeUser(user)}
                 className='cursor-pointer'
               />
@@ -105,10 +107,10 @@ export default function Home() {
         )}
       </div>
       <div className='absolute top-10 right-10'>
-        <div className='font-bold'>Winner List:</div>
+        <div className='font-bold text-right'>Winner List:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
-            <div className='flex text-[#FF5F00] text-xl font-bold' key={user}>
+            <div className='flex text-[#FC4100] text-2xl font-bold' key={user}>
               {index + 1}. {user}
             </div>
           ))}
@@ -130,7 +132,7 @@ export default function Home() {
         )}
       </div>
       <Dialog open={showFinish} onOpenChange={onClose}>
-        <DialogContent>
+        <DialogContent className='bg-white'>
           <div>
             <div className='my-7 text-center text-xl'>
               Congratulation! The winner is:
