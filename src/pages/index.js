@@ -106,10 +106,8 @@ export default function Home() {
           </Button>
         )}
       </div>
-      <div className='absolute top-10 right-10'>
-        <div className='font-bold text-right text-[#FF7F3E]  text-xl'>
-          Winner List:
-        </div>
+      <div className='absolute top-[300px] right-[230px]'>
+        <div className='font-bold text-[#FF7F3E]  text-2xl'>Winner List:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
             <div className='flex text-[#FC4100] text-2xl font-bold' key={user}>
