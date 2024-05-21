@@ -17,15 +17,15 @@ const WheelComponent = ({
   const timerDelay = 20;
   let angleCurrent = 0;
   let angleDelta = 0;
-  const size = 290;
+  const size = 420;
   let canvasContext = null;
   let maxSpeed = Math.PI / `${segments.length}`;
   const upTime = segments.length * 100;
   const downTime = segments.length * 1000;
   let spinStart = 0;
   let frames = 0;
-  const centerX = 300;
-  const centerY = 300;
+  const centerX = 450;
+  const centerY = 450;
 
   useEffect(() => {
     wheelInit();
@@ -44,8 +44,8 @@ const WheelComponent = ({
     let canvas = document.getElementById('canvas');
     if (navigator.appVersion.indexOf('MSIE') !== -1) {
       canvas = document.createElement('canvas');
-      canvas.setAttribute('width', 1000);
-      canvas.setAttribute('height', 600);
+      canvas.setAttribute('width', 900);
+      canvas.setAttribute('height', 900);
       canvas.setAttribute('id', 'canvas');
       document.getElementById('wheel').appendChild(canvas);
     }
@@ -209,8 +209,8 @@ const WheelComponent = ({
     <div>
       <canvas
         id='canvas'
-        width='600'
-        height='600'
+        width='900'
+        height='900'
         style={{
           pointerEvents: isFinished && !isOnlyOnce ? 'none' : 'auto',
         }}

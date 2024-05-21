@@ -77,7 +77,7 @@ export default function Home() {
         <link rel='icon' type='image/svg+xml' href='/public/favicon.ico' />
       </Head>
       <div className='absolute top-10 left-10'>
-        <div className='text-[#FF7F3E]'>Input:</div>
+        <div className='text-[#FF7F3E]  text-2xl'>Input:</div>
         <div className='flex w-[350px] items-center gap-4'>
           <Input
             value={username}
@@ -86,10 +86,13 @@ export default function Home() {
           />
           <Button onPress={onAddUser}>Add</Button>
         </div>
-        <div className='font-bold text-[#FF7F3E]'>Attendee list:</div>
+        <div className='font-bold text-[#FF7F3E] text-2xl'>Attendee list:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {users.map((user, index) => (
-            <div className='flex text-[#FF7F3E] font-semibold' key={user}>
+            <div
+              className='flex text-[#FF7F3E] font-semibold text-2xl'
+              key={user}
+            >
               {index + 1}. {user}
               <IoClose
                 size={26}
@@ -107,16 +110,19 @@ export default function Home() {
         )}
       </div>
       <div className='absolute top-[28vh] left-[75vw]'>
-        <div className='font-bold text-[#FF7F3E]  text-2xl'>Winner List:</div>
+        <div className='font-bold text-[#FF7F3E]  text-3xl'>Winner List:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
-            <div className='flex text-[#FC4100] text-2xl font-bold' key={user}>
+            <div
+              className='flex text-[#FC4100] text-3xl font-bold overflow-hidden'
+              key={user}
+            >
               {index + 1}. {user}
             </div>
           ))}
         </div>
       </div>
-      <div className='z-[9999]'>
+      <div className='z-[9999]  pb-[10vh]'>
         {!showFinish && (
           <WheelComponent
             segments={users}
@@ -136,7 +142,7 @@ export default function Home() {
           <div>
             <div className='my-7 text-center text-xl'>
               Congratulation! The winner is:
-              <div className='text-2xl font-bold'>{currentWinner}</div>
+              <div className='text-3xl font-bold'>{currentWinner}</div>
             </div>
 
             <div className='flex justify-center'>
