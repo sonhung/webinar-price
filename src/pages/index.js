@@ -77,7 +77,7 @@ export default function Home() {
         <link rel='icon' type='image/svg+xml' href='/public/favicon.ico' />
       </Head>
       <div className='absolute top-10 left-10'>
-        <div>Input:</div>
+        <div className='text-[#FF7F3E]'>Input:</div>
         <div className='flex w-[350px] items-center gap-4'>
           <Input
             value={username}
@@ -86,10 +86,10 @@ export default function Home() {
           />
           <Button onPress={onAddUser}>Add</Button>
         </div>
-        <div className='font-bold'>Attendee list:</div>
+        <div className='font-bold text-[#FF7F3E]'>Attendee list:</div>
         <div className='max-h-[70vh] overflow-auto'>
           {users.map((user, index) => (
-            <div className='flex text-[#002379] font-semibold' key={user}>
+            <div className='flex text-[#FF7F3E] font-semibold' key={user}>
               {index + 1}. {user}
               <IoClose
                 size={26}
@@ -107,7 +107,9 @@ export default function Home() {
         )}
       </div>
       <div className='absolute top-10 right-10'>
-        <div className='font-bold text-right'>Winner List:</div>
+        <div className='font-bold text-right text-[#FF7F3E]  text-xl'>
+          Winner List:
+        </div>
         <div className='max-h-[70vh] overflow-auto'>
           {winnerList.map((user, index) => (
             <div className='flex text-[#FC4100] text-2xl font-bold' key={user}>
