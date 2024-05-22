@@ -73,7 +73,10 @@ const WheelComponent = ({
       angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2);
     } else {
       if (winningSegment) {
-        if (currentSegment === winningSegment && frames > 200) {
+        if (
+          currentSegment === winningSegment &&
+          frames > segments.length * 23
+        ) {
           progress = duration / upTime;
 
           angleDelta =
@@ -87,7 +90,9 @@ const WheelComponent = ({
       } else {
         progress = duration / downTime;
         angleDelta =
-          maxSpeed * Math.sin((progress * Math.PI) / 2 + Math.PI / 2);
+          maxSpeed *
+          Math.sin((progress * Math.PI) / 2 + Math.PI / 2) *
+          Math.floor(Math.random() * 180);
       }
       if (progress >= 1) finished = true;
     }

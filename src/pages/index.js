@@ -7,6 +7,7 @@ import { SEG_COLOR } from '@/constants';
 import { Dialog, DialogContent } from '@/components/base';
 import Congratulation from '@/components/congratulation';
 import { getNewUser } from '@/utils';
+import { toast } from 'react-toastify';
 
 export default function Home() {
   const [users, setUser] = useState([]);
@@ -45,11 +46,14 @@ export default function Home() {
     setUser(userData);
   }, []);
 
+  const notify = () => toast.warn('Duplicate result!');
+
   const onFinished = (winner) => {
     if (!winner) return;
     setShowCongrat(true);
     const theWinner = winnerCheats[playTime] || winner;
     if (winnerList.includes(theWinner)) {
+      notify();
       setShowCongrat(false);
       setPlayTime(playTime + 1);
       return;
@@ -127,7 +131,7 @@ export default function Home() {
           <WheelComponent
             segments={users}
             segColors={SEG_COLOR}
-            winningSegment={winnerCheats[playTime] || ''}
+            winningSegment={winnerCheats[playTime] || undefined}
             onFinished={(winner) => onFinished(winner)}
             primaryColor='gray'
             contrastColor='white'
